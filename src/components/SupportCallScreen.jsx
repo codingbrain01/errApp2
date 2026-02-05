@@ -148,7 +148,7 @@ export default function SupportCallScreen() {
                                     <svg className="w-5 h-5 text-green-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                                     </svg>
-                                    <span>Certified Microsoft technicians available</span>
+                                    <span>{os.isMac === true || os.isIOS === true ? ' Certified Apple support available' : 'Certified Microsoft technicians available'}</span>
                                 </div>
                                 <div className="flex items-start gap-2">
                                     <svg className="w-5 h-5 text-green-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -179,7 +179,7 @@ export default function SupportCallScreen() {
             <div className="fixed bottom-0 left-0 right-0 bg-red-950 border-t-2 border-yellow-400 px-6 py-3 flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <span className="font-semibold">WARNING: Do not close this window or restart your computer</span>
+                    <span className="font-semibold">{os.isIOS === true ? 'WARNING: Do not close this window or restart your device' : 'WARNING: Do not close this window or restart your computer'}</span>
                 </div>
                 <span className="text-yellow-300">{os.isMac === true ? 'Apple Inc. © 2026' : 'Microsoft Corporation © 2026'}</span>
             </div>
