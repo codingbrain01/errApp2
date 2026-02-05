@@ -157,7 +157,7 @@ export default function BrowserTester() {
             {stage === 1 && (
                 <div
                     className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fade-in"
-                //onClick={startLockdown}
+                    onClick={startLockdown}
                 >
                     <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full relative p-8 text-center">
                         <div className="flex justify-center mb-4">
