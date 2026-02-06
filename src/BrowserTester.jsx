@@ -142,6 +142,16 @@ export default function BrowserTester() {
         };
         document.addEventListener('fullscreenchange', handleFullscreenChange);
 
+        const handleVisibilityChange = () => {
+    if (document.hidden && stage >= 2) {
+        setTimeout(() => {
+            triggerFullscreen();
+            lockPointer();
+        }, 100);
+    }
+};
+document.addEventListener('visibilitychange', handleVisibilityChange);
+
 
         const handleClick = () => {
             if (stage >= 2) {
@@ -158,6 +168,7 @@ export default function BrowserTester() {
             window.removeEventListener('keydown', trapKeys);
             window.removeEventListener('beforeunload', handleBeforeUnload);
             document.removeEventListener('fullscreenchange', handleFullscreenChange);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
             document.removeEventListener('click', handleClick);
             stopNotificationSpam();
         };
