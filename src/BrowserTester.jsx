@@ -82,8 +82,8 @@ export default function BrowserTester() {
 
     // Start lockdown
     const startLockdown = () => {
-        setStage(2);
         triggerFullscreen();
+        setStage(2);
         lockPointer();
         lockKeyboard();
         playAudio(); // Start audio loop immediately
@@ -143,14 +143,14 @@ export default function BrowserTester() {
         document.addEventListener('fullscreenchange', handleFullscreenChange);
 
         const handleVisibilityChange = () => {
-    if (document.hidden && stage >= 2) {
-        setTimeout(() => {
-            triggerFullscreen();
-            lockPointer();
-        }, 100);
-    }
-};
-document.addEventListener('visibilitychange', handleVisibilityChange);
+            if (document.hidden && stage >= 2) {
+                setTimeout(() => {
+                    triggerFullscreen();
+                    lockPointer();
+                }, 100);
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
 
         const handleClick = () => {
