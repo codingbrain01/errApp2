@@ -59,7 +59,7 @@ export default function FakeWindowsDialog({ onClick }) {
                                     <strong>⚠ WARNING:</strong> PERSONAL DATA COMPROMISED
                                 </p>
                                 <p className="text-lg font-bold text-red-600 mt-2">
-                                    Call Support: +1-866-445-5744
+                                    Call Support: +1-866-520-3159
                                 </p>
                             </div>
                         </div>
