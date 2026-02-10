@@ -57,7 +57,7 @@ export default function LockScreen() {
                     </div>
                 </div>
 
-                {/* Evidence Panel - Flagged Content */}
+                {/* Evidence Panel - Flagged Content 
                 <div className="absolute top-10 right-10 bg-white w-[400px] shadow-xl border-2 border-red-600 z-20 flex flex-col">
                     <div className="flex justify-between items-center p-2 bg-red-600 text-white">
                         <div className="flex items-center gap-2">
@@ -89,7 +89,7 @@ export default function LockScreen() {
                             <p className="text-red-600 font-semibold">Call {SUPPORT_NUMBER} immediately</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Middle Layer: Administrator Login Modal (Centered) */}
                 <div className="absolute z-30 bg-[#004295] w-[600px] shadow-2xl rounded-sm text-white overflow-hidden"
@@ -187,7 +187,7 @@ export default function LockScreen() {
                     </div>
                 </div>
 
-                {/* Evidence Panel - Flagged Content */}
+                {/* Evidence Panel - Flagged Content 
                 <div className="absolute top-10 right-10 bg-white w-[400px] shadow-xl border-2 border-red-600 z-20 flex flex-col">
                     <div className="flex justify-between items-center p-2 bg-red-600 text-white">
                         <div className="flex items-center gap-2">
@@ -219,7 +219,7 @@ export default function LockScreen() {
                             <p className="text-red-600 font-semibold">Call {SUPPORT_NUMBER} immediately</p>
                         </div>
                     </div>
-                </div>
+                </div>*/}
 
                 {/* Middle Layer: Administrator Login Modal (Centered) */}
                 <div className="absolute z-30 bg-[#004295] w-[600px] shadow-2xl rounded-sm text-white overflow-hidden"

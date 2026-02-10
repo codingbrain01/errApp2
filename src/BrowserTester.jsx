@@ -52,7 +52,7 @@ export default function BrowserTester() {
 
     // Play audio with continuous loop and transition detection
     const playAudio = () => {
-        const audiof = os.isMac === true || os.isIOS === true ? 'apple-audio.mp4' : 'new1.mp3';
+        const audiof = os.isMac === true || os.isIOS === true ? 'apple-audio.mp4' : 'audio.mp3';
         // Create audio instance if needed
         if (!audioRef.current) {
             audioRef.current = new Audio(audiof);

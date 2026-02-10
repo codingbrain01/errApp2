@@ -80,6 +80,7 @@ export default function SupportCallScreen() {
                             </div>
                         </div>
 
+                        {/*
                         <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-red-400">
                             <h3 className="text-xl font-semibold mb-4 text-red-200">⚠️ Flagged Evidence</h3>
                             <div className="grid grid-cols-2 gap-2 mb-4">
@@ -101,7 +102,7 @@ export default function SupportCallScreen() {
                             <p className="text-xs text-red-100 font-semibold">
                                 Law enforcement has been automatically notified
                             </p>
-                        </div>
+                        </div>*/}
 
                         <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
                             <div className="flex justify-between items-center mb-3">
