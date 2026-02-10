@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { detectOS } from '../utils/osDetection';
 
-const PHONE = "+1-866-520-3159";
+const PHONE = "+1-866-520-1921";
 
 export default function SupportCallScreen() {
     const [countdown, setCountdown] = useState(300); // 5 minutes
